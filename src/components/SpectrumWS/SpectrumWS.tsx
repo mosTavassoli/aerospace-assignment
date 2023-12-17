@@ -52,7 +52,7 @@ const SpectrumWS = () => {
 
   if (error) return null;
   return (
-    <div className="grid lg:grid-rows-2 justify-center w-full lg:items-center">
+    <div className="grid lg:grid-rows-3 justify-center w-full lg:items-center">
       {showDialog && (
         <SpectrumStatusDialogBox
           statusMessage={statusMessage}
@@ -67,9 +67,9 @@ const SpectrumWS = () => {
       />
       <GaugeComponent sensorData={sensorData} />
       <RealTimeDataVisualization
-        altitudeData={sensorData.altitude}
-        velocityData={sensorData.velocity}
-        temperatureData={sensorData.temperature}
+        altitude={sensorData.altitude}
+        velocity={sensorData.velocity}
+        temperature={sensorData.temperature}
       />
     </div>
   );
