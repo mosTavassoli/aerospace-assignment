@@ -1,8 +1,9 @@
+import { config } from "@/core/config";
 import { useEffect, useState } from "react";
 
 export const useLimitedChartData = (
   data: number | undefined,
-  maxLength: number = 10
+  maxLength = config.defaultLChartDataLimitation
 ) => {
   const [chartData, setChartData] = useState<number[]>([]);
 

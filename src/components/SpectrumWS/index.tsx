@@ -1,1 +1,1 @@
-export { default } from "./SpectrumWS";
+export { default as SpectrumWSCMP } from "./SpectrumWS";

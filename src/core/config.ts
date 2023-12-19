@@ -9,5 +9,6 @@ export const config = (function config() {
     actOnSpectrum,
     defaultDelaySpectrumWS: 2000 as const,
     defaultGaugeAnimateDelay: 1000 as const,
+    defaultLChartDataLimitation: 15 as const,
   };
 })();

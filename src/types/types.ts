@@ -21,10 +21,13 @@ export type DisplayValueType = {
   formattedValue: string;
 };
 
-export type SpectrumStatusDialogBoxProps = {
-  statusMessage: string;
+type DialogBoxHandlerType = {
   handleAction: () => void;
   handleDismiss: () => void;
+};
+
+export type SpectrumStatusDialogBoxProps = DialogBoxHandlerType & {
+  statusMessage: string;
 };
 
 export type SpectrumStatusMessageProps = {
@@ -35,4 +38,23 @@ export type SpectrumStatusMessageProps = {
 
 export type GaugeComponentProps = {
   sensorData: SpectrumStatusType;
+};
+
+type SpectrumBaseType = {
+  sensorData: SpectrumStatusType;
+  handleAction: () => Promise<void>;
+  handleDismiss: () => void;
+  error: string | null;
+};
+
+export type SpectrumStatusProps = SpectrumBaseType & {
+  isActionRequired: boolean;
+  fetchSpectrumData: () => Promise<void>;
+  setIsActionRequired: () => void;
+};
+
+export type SpectrumWSProps = SpectrumBaseType & {
+  reopenWebSocket: () => void;
+  showDialog: boolean;
+  setShowDialog: () => void;
 };

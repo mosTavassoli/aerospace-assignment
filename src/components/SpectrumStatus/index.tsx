@@ -1,1 +1,1 @@
-export { default } from "./SpectrumStatus";
+export { default as SpectrumStatusCMP } from "./SpectrumStatus";
