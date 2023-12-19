@@ -6,8 +6,8 @@ const SpectrumStatusMessage = ({
   statusMessage,
 }: SpectrumStatusMessageProps) => {
   return (
-    <div className="relative after:absolute after:content-[''] after:w-full after:h-[1px] after:bg-black/10 top-0 after:left-1/2 after:-translate-x-1/2 ">
-      <div className="text-center font-bold capitalize flex flex-col gap-2  p-5">
+    <div className="relative after:absolute after:content-[''] after:w-full after:h-[1px] after:bg-black/10 top-0 after:left-1/2 after:-translate-x-1/2 text-sm lg:text-lg">
+      <div className="text-center font-bold capitalize flex flex-col gap-2 p-5">
         <div>
           <span className="text-black/60">Vehicle Direction: </span>
           <span className={`uppercase font-extrabold`}>

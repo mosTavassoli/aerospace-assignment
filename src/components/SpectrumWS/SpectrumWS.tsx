@@ -2,10 +2,12 @@ import { config } from "@/core/config";
 import { useCallback, useState } from "react";
 import useWebSocket from "@/hook/useWebSocket";
 import { SpectrumStatusType } from "@/types/types";
-import GaugeComponent from "../Charts/GaugeComponent";
-import SpectrumStatusMessage from "@/components/SpectrumStatusMessage";
-import SpectrumStatusDialogBox from "@/components/SpectrumStatusDialogBox";
-import RealTimeDataVisualization from "../RealTimeDataVisualization/RealTimeDataVisualization ";
+import { GaugeComponent } from "@/components/Charts/index";
+import SpectrumStatusMessage from "@/components/SpectrumStatusMessage/index";
+import SpectrumStatusDialogBox from "@/components/SpectrumStatusDialogBox/index";
+import RealTimeDataVisualization from "@/components/RealTimeDataVisualization/index";
+import { actOnSpectrum } from "@/helpers/actOnSpectrum";
+import { ToastContainer, toast } from "react-toastify";
 
 const SpectrumWS = () => {
   const [showDialog, setShowDialog] = useState(false);
@@ -40,9 +42,21 @@ const SpectrumWS = () => {
     config.defaultDelaySpectrumWS
   );
 
-  const handleAction = () => {
-    setShowDialog(false);
-    reopenWebSocket();
+  const handleAction = async () => {
+    const status = await actOnSpectrum();
+    if (status === 200) {
+      toast.info("Action is Taken", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
+      setShowDialog(false);
+      reopenWebSocket();
+    }
   };
 
   const handleDismiss = () => {
@@ -71,6 +85,7 @@ const SpectrumWS = () => {
         velocity={sensorData.velocity}
         temperature={sensorData.temperature}
       />
+      <ToastContainer />
     </div>
   );
 };

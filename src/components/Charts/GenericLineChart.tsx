@@ -22,7 +22,7 @@ const GenericLineChart: React.FC<GenericLineChartProps> = ({
       },
       tooltip: {
         enabled: true,
-        backgroundColor: "black", // Customize tooltip background color if needed
+        backgroundColor: "black",
       },
     },
     scales: {
@@ -30,16 +30,16 @@ const GenericLineChart: React.FC<GenericLineChartProps> = ({
         display: true,
         title: {
           display: true,
-          text: "Time", // Customize x-axis title if needed
-          color: "black", // Customize x-axis title color if needed
+          text: "Time",
+          color: "black",
         },
       },
       y: {
         display: true,
         title: {
           display: true,
-          text: chartLabel, // Use the chartLabel for y-axis title
-          color: "black", // Customize y-axis title color if needed
+          text: chartLabel,
+          color: "black",
         },
       },
     },

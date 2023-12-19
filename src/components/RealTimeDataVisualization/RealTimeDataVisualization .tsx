@@ -1,4 +1,4 @@
-import GenericLineChart from "../Charts/GenericLineChart";
+import { GenericLineChart } from "@/components/Charts/index";
 import { SpectrumStatusType } from "@/types/types";
 import { useLimitedChartData } from "@/hook/useLimitedChartData";
 

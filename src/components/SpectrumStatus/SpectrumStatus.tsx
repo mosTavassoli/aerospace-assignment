@@ -1,9 +1,12 @@
 import { useEffect } from "react";
-import CallToAction from "../CallToAction";
 import useFetchData from "@/hook/useFetchData";
-import GaugeComponent from "../Charts/GaugeComponent";
-import SpectrumStatusMessage from "@/components/SpectrumStatusMessage";
-import SpectrumStatusDialogBox from "@/components/SpectrumStatusDialogBox";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import { actOnSpectrum } from "@/helpers/actOnSpectrum";
+import { GaugeComponent } from "@/components/Charts/index";
+import CallToAction from "@/components/CallToAction/index";
+import SpectrumStatusMessage from "@/components/SpectrumStatusMessage/index";
+import SpectrumStatusDialogBox from "@/components/SpectrumStatusDialogBox/index";
 
 const SpectrumStatus = () => {
   const {
@@ -20,8 +23,20 @@ const SpectrumStatus = () => {
     fetchSpectrumData();
   }, [fetchSpectrumData]);
 
-  const handleAction = () => {
-    setIsActionRequired(false);
+  const handleAction = async () => {
+    const status = await actOnSpectrum();
+    if (status === 200) {
+      toast.info("Action is Taken", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
+      setIsActionRequired(false);
+    }
   };
 
   const handleDismiss = () => {
@@ -46,6 +61,7 @@ const SpectrumStatus = () => {
       />
       <GaugeComponent sensorData={sensorData} />
       <CallToAction fetchData={fetchSpectrumData} />
+      <ToastContainer />
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SpectrumStatus from "./components/SpectrumStatus";
+import SpectrumStatus from "./components/SpectrumStatus/index";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import SpectrumWS from "./components/SpectrumWS";
+import SpectrumWS from "./components/SpectrumWS/index";
 
 function App() {
   const [tabIndex, setTabIndex] = useState(0);
